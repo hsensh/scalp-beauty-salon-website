@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Manage Contact{% endblock %}
+
+{% block content %}
+
+{% include 'common/about_form.html' %}
+
+{% if objects %}
+<div class='container'>
+    <div class='row justify-content-center content-wrapper'>
+    {% for item in objects %}
+        <div class='col-lg-4 col-sm-8 col-xs-12 display-card'>
+            <div class="card h-100">
+                <div class='card-body'>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>{{ item.contact_type }}</strong><br>
+                        <p class='m-0 p-0'>{{ item.info }}</p>
+                    </li>
+                </div>
+                    <div style='margin:0;padding:0;'>
+                        <a href="{% url 'edit-contact-information-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Edit</a>
+                    </div>
+                    <div style='margin:0;padding:0;'>
+                        <a href="{% url 'delete-contact-information-admin' item.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+                    </div>
+                </ul>
+                
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

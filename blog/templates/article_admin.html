@@ -1,0 +1,49 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Manage Articles{% endblock %}
+
+{% block content %}
+
+{% include 'common/article_form.html' %}
+
+<div class='container mt-5'>
+    {% for item in objects %}
+    <div class='row justify-content-center'>
+    <div class='col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">     
+            <div class='card-body'>
+                <h5>{{ item.title }}</h5>
+                <p>{{ item.content }}</p>
+            </div>
+            <div class='card-body'>
+                <div class='row justify-content-center'>
+                    {% for image in images %}
+                        {% if image.article == item %}
+                        <div class='col-lg-4 col-sm-12 m-0 p-0'>
+                            <a href="{{ image.image.url }}" data-lightbox="artice-image-admin-{{ item.id }}" data-title="{{ image.caption }}" style="height:100px;">
+                                <img class="card-img-top" src="{% thumbnail image.image 300x300 crop quality="100" %}">
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'edit-article-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Edit</a>
+            </div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'delete-article-admin' item.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,65 @@
+{% extends 'common/base.html' %}
+{% load manage_site_extras %}
+{% load thumbnail %}
+
+{% block title %}Manage Services{% endblock %}
+
+{% block content %}
+
+{% include 'common/service_form.html' %}
+
+<div class='container'>
+    <div class='row'>
+    {% for item in objects %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+            <div class="card-body pb-0 mb-0"><strong>{{ item.name }}</strong></div>
+            <div class="card-body pt-0 mt-0"><small>{{ item.description }}</small></div>
+            <div class="card-body pt-0 mt-0">
+            <table class="card-body table table-bordered table-view">
+                <tbody>
+                    <tr>
+                        <td><strong>Service Type</strong></td>
+                        <td>{{ item.service_type.name }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suitable For</strong></td>
+                        <td>{{ item.gender }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price</strong></td>
+                        <td>{{ item.price }}$</td>
+                    </tr>
+                    {% if item.discounted_price != None %}
+                    <tr>
+                        <td><strong>Discounted Price</strong></td>
+                        <td>{{ item.discounted_price }}$</small></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discount</strong></td>
+                        <td>{{ item.discounted_price|percentage:item.price }}%</small></td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td><strong>Featured</strong></td>
+                        <td>{{ item.featured|yes_no }}</small></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'edit-service-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Edit</a>
+            </div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'delete-service-admin' item.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

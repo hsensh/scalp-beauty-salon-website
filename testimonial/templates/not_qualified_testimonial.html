@@ -1,0 +1,13 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Not Qualified{% endblock %}
+
+{% block content %}
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-6 col-sm-12'>
+        <h1 class='text-center'>Not Qualified Yet!</h1>
+        <h5 class='text-center'>Sorry! You must attend an appointment with this staff member in order to give him a testimonial!</h1>
+        <h5 class='text-center'><a href="{% url 'service-type'%}">Book an Appointment</a></h5>
+    </div>
+</div>
+{% endblock %}

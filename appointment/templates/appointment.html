@@ -1,0 +1,61 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block content %}
+
+{% if todays or upcomings or dues %}
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h1>Appointments</h1>
+    </div>
+    {% if is_admin %}
+        {% if requested %}
+            <div class='row justify-content-center'>
+                <h4>Requested</h4>
+            </div>
+            <div class='row justify-content-center'>
+            {% for item in requested %}
+                {% include 'common/appointment_display.html' %}
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if todays %}
+    <div class='row justify-content-center'>
+        <h4>Today</h4>
+    </div>
+    <div class='row justify-content-center'>
+    {% for item in todays %}
+        {% include 'common/appointment_display.html' %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if upcomings %}
+    <div class='row justify-content-center'>
+        <h4>Upcoming</h4>
+    </div>
+    <div class='row justify-content-center'>
+    {% for item in upcomings %}
+        {% include 'common/appointment_display.html' %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if done %}
+        <div class='row justify-content-center'>
+            <h4>Done</h4>
+        </div>
+        <div class='row justify-content-center'>
+        {% for item in done %}
+            {% include 'common/appointment_display.html' %}
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,180 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load manage_site_extras %}
+{% block title%}About{% endblock %}
+
+{% block content %}
+<div class="slide-one-item home-slider owl-carousel">
+
+  <div class="site-blocks-cover inner-page-cover" style="background-image: url('{{ picture.photo.url }}');" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center justify-content-center text-center">
+
+        <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+          <h2 class="text-white font-weight-light mb-2 display-1">About Us</h2>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>  
+
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">A Quick Overview</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-8 text-center">
+        <p>{{ about.info }}</p>
+      </div>
+      {% if operating_hours %}
+      <div class="col-md-6 col-lg-4">
+        <div class="border p-4 d-flex align-items-center justify-content-center h-100">
+          <div class="text-center">
+            <h2 class="text-primary h2 mb-5">Opening Hours</h2>
+            {% for item in operating_hours %}
+            <p class="mb-4">
+              <span class="d-block font-weight-bold">{{ item.days }}</span>
+              {{ item.hours }}
+            </p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Our Team</h2>
+      </div>
+    </div>
+    <div class='row'>
+      {% for item in staff %}
+      <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+          <div class="card-body m-0 p-0">
+            <a href="{{ item.photo.url }}" data-lightbox="staff-photo-admin" data-title="{{ item.user.first_name|add:' '|add:item.user.last_name }}">
+                <img class="card-img-top" src="{% thumbnail item.photo 500x500 crop quality="100" %}">
+            </a>
+          </div>
+          <div class='container m-1'>
+            <div class="card-body p-0 m-0">
+              <p class='mb-0'><strong>Name</strong></p>
+              <p>{{ item.user.first_name|add:' '|add:item.user.last_name }}</p>
+            </div>
+            <div class="card-body p-0 m-0">
+              <p class='mb-0'><strong>About</strong></p>
+              <p>{{ item.about }}</p>
+            </div>
+            <div class="card-body p-0 m-0">
+              <p class='mb-0'><strong>Age</strong></p>
+              <p>{{ item.birthdate|date:'Y'|age }}</p>
+            </div>
+            <div class="card-body p-0 m-0">
+              <p class='mb-0'><strong>Skills</strong></p>
+              <p>
+              {% for service_type in item.service_type.all %}
+                  {{ service_type }}<br>
+              {% endfor %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Our Awards</h2>
+      </div>
+    </div>
+  <div class='row'>
+    {% for item in awards %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+      <div class="card h-100">
+        <div class="card-body h-100 m-0 p-0">
+          <a href="{{ item.logo.url }}" data-lightbox="award-admin" data-title="{{ item.title }}" style="height: 500px;">
+              <img style="display: block;margin:1.5em auto;" src="{% thumbnail item.logo 150x150 quality="100" %}" style="margin:0 auto;">
+          </a>
+        </div>
+        <div class='container m-1'>
+          <div class='card-body'>
+            <p class='mb-0'><strong>Title</strong></p>
+            <p>{{ item.title }}</p>
+          </div>
+          <div class='card-body'>
+            <p class='mb-0'><strong>Description</strong></p>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Our Partnerships</h2>
+      </div>
+    </div>
+  <div class='row'>
+    {% for item in partnerships %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+      <div class="card h-100">
+        <div class="card-body h-100 m-0 p-0">
+          <a href="{{ item.logo.url }}" data-lightbox="award-admin" data-title="{{ item.title }}" style="height: 500px;">
+              <img style="display: block;margin:1.5em auto;" src="{% thumbnail item.logo 150x150 quality="100" %}" style="margin:0 auto;">
+          </a>
+        </div>
+        <div class='container m-1'>
+          <div class='card-body'>
+            <p class='mb-0'><strong>Company Name</strong></p>
+            <p>{{ item.company_name }}</p>
+          </div>
+          <div class='card-body'>
+            <p class='mb-0'><strong>About</strong></p>
+            <p>{{ item.about }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class='row'>
+    <div class='container'>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-7">
+          <h2 class="site-section-heading font-weight-light text-black text-center">Contact Us</h2>
+        </div>
+      </div>
+    </div>
+    {% for item in contacts %}
+      <div class='container justify-content-center m-auto text-center'>
+        <div class='card-body'>
+          <p class='mb-0'><strong>{{ item.contact_type }}</strong></p>
+          <p>{{ item.info }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

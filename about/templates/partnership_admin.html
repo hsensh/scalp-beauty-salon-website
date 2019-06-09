@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Manage Partnerships{% endblock %}
+
+{% block content %}
+
+{% include 'common/about_form.html' %}
+
+<div class='container'>
+    <div class='row'>
+    {% for item in objects %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+            <a href="{{ item.logo.url }}" data-lightbox="partnership-admin" data-title="{{ item.company_name }}" style="height: 200px;">
+                <img style="display:block;margin:1.5em auto;" src="{% thumbnail item.logo 200x200 quality="100" %}" style="margin:0 auto;">
+            </a>
+            <div class="card-body pb-0 mb-0"><strong>{{ item.company_name }}</strong></div>
+            <div class="card-body pt-0 mt-0"><small>{{ item.about }}</small></div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'edit-partnership-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Edit</a>
+            </div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'delete-partnership-admin' item.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

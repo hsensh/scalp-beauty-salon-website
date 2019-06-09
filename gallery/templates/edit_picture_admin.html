@@ -1,0 +1,26 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-sm-6 col-xs-12' style="margin-top:1em;margin-bottom:2em;">
+        <div class="card">
+            <a href="{{ item.picture.url }}" data-lightbox="edit-picture-admin" data-title="{{ item.caption }}">
+                <img class="card-img-top" src="{% thumbnail item.picture 500x500 crop quality="100" %}">
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'common/gallery_form.html' %}
+
+{% endblock content %}
+
+
+

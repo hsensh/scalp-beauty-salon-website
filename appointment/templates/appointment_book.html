@@ -1,0 +1,53 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+
+{% block title%}Book Appointment{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class='row justify-content-center content-wrapper'>
+        <h1>Book an Appointment</h1>
+    </div>
+    <div class="row justify-content-center mb-0">
+        <div class="col-md-7">
+            <h5 class="site-section-heading font-weight-light text-black text-center mb-0 pb-0" style='font-size:2.5em;'>{{ service_type.name }}</h5>
+        </div>
+    </div>
+    {% if form.non_field_errors %}
+    <div class='row justify-content-center content-wrapper'>
+        <div class="alert alert-danger form-error">
+        {% for error in form.non_field_errors %}
+        <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <div class='row justify-content-center content-wrapper'>
+        <button class='btn btn-info rounded'><a class='text-white' href="{% url 'appointment-calendar' %}" target="_blank">View Calendar</a></button>
+    </div>
+    <div class='row justify-content-center content-wrapper'>
+        <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+            {% for field in form %}
+            <div class='form-group'>
+                <label for={{ field.id_for_label }}>{{ field.label }}</label>
+                {% if field.label == "Date" %}
+                {% include 'common/date_time_picker.html' %}
+                {% else %}
+                {{ field|add_class:'form-control' }}
+                {% endif %}
+                {% if field.errors %}
+                    <div class="alert alert-danger form-error">
+                    {% for error in field.errors %}
+                    <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div class="form-group">
+                <input class='form-control' type='submit' value='Book'>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

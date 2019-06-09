@@ -1,0 +1,23 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row'>
+    {% for item in pictures %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+            <a href="{{ item.picture.url }}" data-lightbox="picture-admin" data-title="{{ item.caption }}">
+                <img class="card-img-top" src="{% thumbnail item.picture 500x500 crop quality="100" %}">
+            </a>
+            <div class="card-body">{{ item.caption }}</div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

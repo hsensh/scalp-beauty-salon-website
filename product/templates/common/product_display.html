@@ -1,0 +1,50 @@
+{% load manage_site_extras %}
+{% load thumbnail %}
+
+<div class="card h-100">
+    <div class="card-body p-0 m-0">
+        <a href="{{ item.photo.url }}" data-lightbox="picture-admin" data-title="{{ item.name }}">
+            <img class="card-img-top" src="{% thumbnail item.photo 500x500 crop quality="100" %}">
+        </a>
+    </div>
+    <div class="card-body pb-0 mb-0"><strong>{{ item.name }}</strong></div>
+    <div class="card-body pt-0 mt-0"><small>{{ item.description }}</small></div>
+    <div class="card-body pt-0 mt-0">
+        <table class="card-body table table-bordered table-view">
+            <tbody>
+                <tr>
+                    <td><strong>Product Type</strong></td>
+                    <td>{{ item.service_type.name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Suitable For</strong></td>
+                    <td>{{ item.gender }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Price</strong></td>
+                    <td>{{ item.price }}$</td>
+                </tr>
+                {% if item.discounted_price != None %}
+                <tr>
+                    <td><strong>Discounted Price</strong></td>
+                    <td>{{ item.discounted_price }}$</small></td>
+                </tr>
+                <tr>
+                    <td><strong>Discount</strong></td>
+                    <td>{{ item.discounted_price|percentage:item.price }}%</small></td>
+                </tr>
+                {% endif %}
+                {% if not item.in_stock %}
+                <tr>
+                    <td><strong class='bg-danger text-white'>ITEM NOT IN STOCK</strong></td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% if item.in_stock %}
+        <div style='margin:0;padding:0;'>
+            <a href="{% url 'product-add-to-cart' item.id %}" class="card-link btn btn-info" style='width:100%;'>Add to Cart</a>
+        </div>
+    {% endif %}
+</div>

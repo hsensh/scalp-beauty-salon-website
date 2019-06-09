@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Edit About Picture{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-sm-6 col-xs-12' style="margin-top:1em;margin-bottom:2em;">
+        <div class="card">
+            <a href="{{ item.photo.url }}" data-lightbox="edit-about-picture-admin">
+                <img class="card-img-top" src="{% thumbnail item.photo 500x500 crop quality="100" %}">
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'common/about_form.html' %}
+
+{% endblock content %}
+
+
+

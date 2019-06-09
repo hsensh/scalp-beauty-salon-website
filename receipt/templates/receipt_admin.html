@@ -1,0 +1,48 @@
+{% extends 'common/base.html' %}
+
+{% block title%}Receipts{% endblock%}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h1>All Receipts</h1>
+    </div>
+    {% if not receipts %}
+        <h1 class='text-center'>No Receipts Yet</h1>
+        <h5 class='text-center'><a href="{% url 'manage-site'%}">Back to Manage Site</a></h5>
+    {% else %}
+    <div class='row justify-content-center'>
+        {% for receipt in receipts %}
+        <div class='col-lg-4 col-md-6 col-sm-12'>
+            <div class='card p-2 display-card'>
+                <div class='card-body pb-0 mb-3 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>{{ receipt.user.user.first_name }} {{ receipt.user.user.last_name }}</h5>
+                    <p class='p-0 m-0'>{{ receipt.user.user.username }}</p>                    
+                </div>
+                <hr class='m-1'>
+                {% for item in receipt.receiptproduct_set.all %}
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <p class='p-0 m-0'>{{ item.quantity }}x {{ item.product.name }}
+                        <span class='pull-right'>
+                        {% if item.product.discounted_price %}
+                        {{ item.product.discounted_price }}$
+                        {% else %}
+                        {{ item.product.price }}$
+                        {% endif %}
+                        </span>
+                    </p>
+                </div>
+                <hr class='m-1'>
+                {% endfor %}
+                <div class='card-body'>
+                    <p class='p-0 m-0'><strong>Total Price<span class='pull-right'>{{ receipt.total_price }}$</span></strong></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Thank you{% endblock %}
+
+{% block content %}
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-6 col-sm-12'>
+        <h1 class='text-center'>Add Appointment to Your Google Calendar?</h1>
+        <h5 class='text-center'><a href="{% url 'add-event-to-calendar' %}">Yes</a></h5>
+        <h5 class='text-center'><a href="{% url 'send-event-as-text-message-prompt' %}">No</a></h5>
+    </div>
+</div>
+{% endblock %}

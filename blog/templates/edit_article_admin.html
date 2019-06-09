@@ -1,0 +1,32 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <div class='col-lg-4 col-sm-12 m-0 p-0'>
+            <div class='row justify-content-center'>
+            {% for image in images %}
+                <div class='col-md-4 col-sm-12 p-1'>
+                <a href="{{ image.image.url }}" data-lightbox="artice-image-admin-{{ item.id }}" data-title="{{ image.caption }}" style="height:100px;">
+                    <img class="card-img-top" src="{% thumbnail image.image 300x300 crop quality="100" %}">
+                </a>
+                <a href="{% url 'delete-article-image-admin' image.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>  
+</div>
+
+{% include 'common/article_form.html' %}
+
+
+{% endblock content %}
+
+
+

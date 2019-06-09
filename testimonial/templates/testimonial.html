@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %} 
+
+{% block title %}Testimonials{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <div class='col-lg-4 col-sm-12'>
+            <h1 class='text-center'>Testimonials</h1>
+            <h5 class='text-center'>Choose a staff member to review</h5>
+        </div>
+    </div>
+    <div class='row justify-content-center'>
+        <div class='col-lg-4 col-sm-12'>
+            {% for item in staff %}
+
+                <div class="card m-4 {% if item.id in staff_done %}bg-primary{% endif %}">
+                    <a class="{% if item.id in staff_done %}text-white{% else %}text-black{% endif %}" href="{% url 'give-testimonial' item.id %}">
+                    <div class='card-body'>
+                        <p class='mb-0 pb-0'><strong>Name</strong></p>
+                        <p>{{ item.user.first_name }} {{ item.user.last_name }}</p>
+                        <p class='mb-0 pb-0'><strong>Skills</strong></p>
+                        {% for service_type in item.service_type.all %}
+                            <p class='m-0 p-0'>{{ service_type }}</p>
+                        {% endfor %}
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

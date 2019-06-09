@@ -1,0 +1,75 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+{% load manage_site_extras %}
+
+{% block title %}Manage Gallery{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h1>User List</h1>
+    </div>
+    <div class='row'>
+    {% for item in objects %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+            {% if item.photo %}
+            <div class="card-body m-0 p-0">
+            <a href="{{ item.photo.url }}" data-lightbox="user-photo-admin" data-title="{{ item.user.first_name|add:' '|add:item.user.last_name }}">
+                <img class="card-img-top" src="{% thumbnail item.photo 500x500 crop quality="100" %}">
+            </a>
+            </div>
+            {% endif %}
+            <div class="card-body p-0 m-0">
+            <table class="card-body table table-bordered table-view">
+                <tbody>
+                    <tr>
+                        <td><strong>Username</strong></td>
+                        <td>{{ item.user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td>{{ item.user.first_name|add:' '|add:item.user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td>{{ item.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Age</strong></td>
+                        {% if item.birthdate %}
+                        <td>{{ item.birthdate|date:'Y'|age }}</td>
+                        {% else %}
+                        <td>Not Disclosed</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td><strong>Gender</strong></td>
+                        <td>{{ item.gender }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>City</strong></td>
+                        <td>{{ item.city }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Country</strong></td>
+                        <td>{{ item.country }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone Number</strong></td>
+                        <td>{{ item.phone_number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

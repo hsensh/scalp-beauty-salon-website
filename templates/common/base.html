@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Scalp - {% block title %}{% endblock %}</title>
+    {% include 'common/links.html' %}
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+
+{% include 'common/navbar.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class="mb-1">
+              <a href="http://www.facebook.com" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+              <a href="http://www.twitter.com" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+              <a href="http://www.instagram.com" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+              <a href="http://www.linkedin.com" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+            </div>
+
+            <p>Copyright AUB</p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+    {% include 'common/scripts.html' %}
+    
+  </body>
+</html>
+  
+
+   

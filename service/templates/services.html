@@ -1,0 +1,52 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+
+<div class="site-section">
+    <div class='container'>
+    {% if males %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7">
+                <h5 class="site-section-heading font-weight-light text-black text-center">Males</h5>
+            </div>
+        </div>
+        <div class='row justify-content-center'>
+        {% for item in males %}
+            <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+            {% include 'common/service_display.html' %}
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% if females %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7">
+                <h5 class="site-section-heading font-weight-light text-black text-center">Females</h5>
+            </div>
+        </div>
+        <div class='row justify-content-center'>
+        {% for item in females %}
+            <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+            {% include 'common/service_display.html' %}
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% if both %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7">
+                <h5 class="site-section-heading font-weight-light text-black text-center">Both</h5>
+            </div>
+        </div>
+        <div class='row justify-content-center'>
+        {% for item in both %}
+            <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+            {% include 'common/service_display.html' %}
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

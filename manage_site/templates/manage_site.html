@@ -1,0 +1,251 @@
+{% extends 'common/base.html' %}
+{% block title %}Manage Site{% endblock %}
+{% block content %}
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Manage Site</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Home</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'home-picture-admin' %}>
+            <h5 class="text-white h4">Manage Home Picture</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'edit-map-location-text-admin' %}>
+            <h5 class="text-white h4">Edit Map Location Text</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">About</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'edit-about-picture-admin' %}>
+            <h5 class="text-white h4">Change About Picture</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'edit-about-admin' %}>
+            <h5 class="text-white h4">Manage About Section</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'contact-information-admin' %}>
+            <h5 class="text-white h4">Manage Contact Information</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'award-admin' %}>
+            <h5 class="text-white h4">Manage Awards</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'partnership-admin' %}>
+            <h5 class="text-white h4">Manage Partnerships</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Gallery</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'picture-admin' %}>
+            <h5 class="text-white h4">Manage Gallery</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Services & Products</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'service-type-admin' %}>
+            <h5 class="text-white h4">Manage Service Types</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'service-admin' %}>
+            <h5 class="text-white h4">Manage Services</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'product-admin' %}>
+            <h5 class="text-white h4">Manage Products</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Users</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'user-admin' %}>
+            <h5 class="text-white h4">User List</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Staff</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'signup-staff-admin' %}>
+            <h5 class="text-white h4">Add Staff</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'staff-admin' %}>
+            <h5 class="text-white h4">Manage Staff</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Appointments & Receipts</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'appointment-calendar' %}>
+            <h5 class="text-white h4">View Appointment Calendar</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'appointment-admin' %}>
+            <h5 class="text-white h4">All Appointments</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'receipt-admin' %}>
+            <h5 class="text-white h4">All Receipts</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'edit-appointment-time-admin' %}>
+            <h5 class="text-white h4">Edit Appointment Times</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Reporting</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'reports-admin' %}>
+            <h5 class="text-white h4">Reports</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'reviews-admin' %}>
+            <h5 class="text-white h4">Reviews</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'testimonials-admin' %}>
+            <h5 class="text-white h4">Testimonials</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Blog</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'article-admin'%}>
+            <h5 class="text-white h4">Manage Blog</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Newsletter</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'newsletter' "staff" %}>
+            <h5 class="text-white h4">Staff Newsletter</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'newsletter' "customer" %}>
+            <h5 class="text-white h4">Customer Newsletter</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

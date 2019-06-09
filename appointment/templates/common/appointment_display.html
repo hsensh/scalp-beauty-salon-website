@@ -1,0 +1,74 @@
+{% load thumbnail %}
+
+<div class='col-lg-4 col-sm-8 col-xs-12 display-card'>
+<div class="card h-100">
+    <ul class="card-body list-group list-group-flush m-0 p-0">
+        <li class="list-group-item">
+            <strong>Customer Name</strong><br>
+            <p class='m-0 p-0'>{{ item.customer.user.first_name }} {{ item.customer.user.last_name }}</p>
+        </li>
+        <li class="list-group-item">
+            <strong>Service Type</strong><br>
+            <p class='m-0 p-0'>{{ item.service.service_type.name }}</p>
+        </li>
+        <li class="list-group-item">
+            <strong>Service</strong><br>
+            {% if item.service.discounted_price == None %}
+            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.price }}$</p>
+            {% else %}
+            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.discounted_price }}$</p>
+            {% endif %}
+        </li>
+        <li class="list-group-item">
+            <strong>Stylist</strong><br>
+            <p class='m-0 p-0'>{{ item.staff.user.first_name }} {{ item.staff.user.last_name }}</p>
+        </li>
+        <li class="{% if item.is_past %}bg-warning text-white{% endif %} list-group-item">
+            <strong>Date</strong><br>
+            <p class='m-0 p-0'>{{ item.date }}{% if item.is_past %} (DONE) {% endif %}</p>
+        </li>
+        <li class="list-group-item">
+            <strong>Notes</strong><br>
+            <p class='m-0 p-0'>{{ item.notes }}</p>
+        </li>
+        {% if item.canceled %}
+        <li class="list-group-item bg-warning text-white">
+            <strong>CANCELED
+            {% if item.requested_cancellation %}
+            UPON REQUEST BY {{ item.requesting_user_type|upper }}
+            {% endif %}
+            </strong><br>
+        </li>
+        {% elif item.requested_cancellation %}
+        <li class="list-group-item bg-secondary text-white">
+            <strong>REQUESTED CANCELLATION BY {{ item.requesting_user_type|upper }}</strong><br>
+        </li>
+        {% endif %}
+        {% if item.rejected_requested_cancellation and not item.canceled %}
+        <li class="list-group-item bg-secondary text-white">
+            <strong>CANCELLATION REQUEST BY {{ item.requesting_user_type|upper }} REJECTED BY ADMIN</strong><br>
+        </li>
+        {% endif %}
+    </ul>
+    {% if item.can_cancel %}
+        {% if is_admin %}
+            {% if not item.canceled %}
+                {% if item.requested_cancellation and not item.rejected_requested_cancellation %}
+                    <div style='margin:0;padding:0;'>
+                        <a href="{% url 'reject-cancellation-request-appointment-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Reject</a>
+                    </div>
+                {% endif %}
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'cancel-appointment-admin' item.id %}" class="card-link btn btn-danger text-white" style='width:100%;'>Cancel</a>
+            </div>
+            {% endif %}
+        {% else %}
+            {% if not item.requested_cancellation and not item.canceled %}
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'request-cancellation-appointment' item.id %}" class="card-link btn btn-info" style='width:100%;'>Request Cancellation</a>
+            </div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    </div>
+</div>

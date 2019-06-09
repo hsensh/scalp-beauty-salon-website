@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+
+<div class='container mt-5'>
+    {% for item in objects %}
+    <div class='row justify-content-center m-3'>
+        <div class='col-sm-6 col-xs-12'>
+            <h1 class='text-center'>{{ item.title }}</h1>
+            <p>{{ item.content }}</p>
+            <div class='row justify-content-center'>
+                {% for image in images %}
+                    {% if image.article == item %}
+                    <div class='col-lg-4 col-sm-12 m-0 p-0'>
+                        <a href="{{ image.image.url }}" data-lightbox="artice-image-admin-{{ item.id }}" data-title="{{ image.caption }}" style="height:100px;">
+                            <img class="card-img-top" src="{% thumbnail image.image 300x300 crop quality="100" %}">
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+
+
+

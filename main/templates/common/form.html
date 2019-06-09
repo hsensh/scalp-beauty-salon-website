@@ -1,0 +1,35 @@
+{% load widget_tweaks %}
+
+<div class='container'>
+    {% if form.non_field_errors %}
+    <div class='row justify-content-center content-wrapper'>
+        <div class="alert alert-danger form-error">
+        {% for error in form.non_field_errors %}
+        <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <div class='row justify-content-center'>
+        <form enctype="multipart/form-data" method='POST'>{% csrf_token %}
+            {% autoescape off %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field|add_class:"form-control" }}
+                {% if field.errors %}
+                    <div class="alert alert-danger form-error">
+                    {% for error in field.errors %}
+                    <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endautoescape %}
+            <div class="form-group">
+                <input class='form-control' type='submit' value='Save'>
+            </div>
+        </form>
+    </div>
+</div>

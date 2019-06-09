@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+
+{% block title%}Unauthorized{% endblock %}
+
+{% block content%}
+    <div class='site-wrap'>
+        <div class='container'>
+            <div class='row justify-content-center text-center'>
+                <div class='col-lg-4'>
+                    <h1>Unauthorized User</h1>
+                    <h5>Sorry, you are not authorized to view this page.</h5>
+                    <p class='mb-0'><a href="{% url 'login' %}">Try another account</a></p>
+                    <p class='mb-0'><a href="{% url 'home' %}">Return to Homepage</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

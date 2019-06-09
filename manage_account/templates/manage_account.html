@@ -1,0 +1,106 @@
+{% extends 'common/base.html' %}
+{% block title %}Manage Account{% endblock %}
+{% block content %}
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Manage Account</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h5 class="site-section-heading font-weight-light text-black text-center">Account Information</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      {% if not is_admin %}
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'edit-profile' %}>
+            <h5 class="text-white h4">Update Profile Information</h5>
+          </a>
+        </div>
+      </div>
+      {% endif %}
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'password_reset' %}>
+            <h5 class="text-white h4">Change Password<br></h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'change-username' %}>
+            <h5 class="text-white h4">Change Username</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {% if is_staff or is_user %}
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Appointments & Receipts</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'appointment-calendar' %}>
+            <h5 class="text-white h4">View Appointment Calendar</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'appointment' %}>
+            <h5 class="text-white h4">My Appointments</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'receipt' %}>
+            <h5 class="text-white h4">My Receipts</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if is_staff %}
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Testimonials</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'testimonial-staff' %}>
+            <h5 class="text-white h4">My Testimonials</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if is_user %}
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7">
+        <h2 class="site-section-heading font-weight-light text-black text-center">Newsletter</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+        <div class="h-100 p-4 p-lg-5 bg-dark site-block-feature-7">
+          <a href={% url 'newsletter-subscribe' %}>
+            <h5 class="text-white h4">Subscribe/Unsubscribe from Newsletter</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

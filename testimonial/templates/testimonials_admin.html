@@ -1,0 +1,50 @@
+{% extends 'common/base.html' %}
+
+{% block title%}Testimonials{% endblock%}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h1>All Testimonials</h1>
+    </div>
+    {% if not testimonials %}
+        <h1 class='text-center'>No Testimonials Yet</h1>
+        <h5 class='text-center'><a href="{% url 'manage-site'%}">Back to Manage Site</a></h5>
+    {% else %}
+    <div class='row justify-content-center'>
+        {% for testimonial in testimonials %}
+        <div class='col-lg-4 col-md-6 col-sm-12'>
+            <div class='card p-2 display-card'>
+                <div class='card-body pb-0 mb-3 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Customer Name</h5>
+                    <p class='p-0 m-0'>{{ testimonial.user.user.first_name }} {{ testimonial.user.user.last_name }}</p>
+                    <h5 class='p-0 m-0'>Customer Username</h5>
+                    <p class='p-0 m-0'>{{ testimonial.user.user.username }}</p>                    
+                </div>
+                <div class='card-body pb-0 mb-3 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Staff Name</h5>
+                    <p class='p-0 m-0'>{{ testimonial.staff.user.first_name }} {{ testimonial.staff.user.last_name }}</p>
+                    <h5 class='p-0 m-0'>Staff Username</h5>
+                    <p class='p-0 m-0'>{{ testimonial.staff.user.username }}</p>                    
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Summary</h5>
+                    <p class='p-0 m-0'>{{ testimonial.summary }}</p>
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Info</h5>
+                    <p class='p-0 m-0'>{{ testimonial.info }}</p>
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Rating</h5>
+                    <p class='p-0 m-0'>{{ testimonial.rating }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

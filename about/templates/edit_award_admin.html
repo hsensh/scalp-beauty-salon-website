@@ -1,0 +1,24 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Edit Award{% endblock %}
+
+{% block content %}
+<div class='container'>
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-sm-6 col-xs-12' style="margin-top:1em;margin-bottom:2em;">
+        <div class="card h-100">
+            <a href="{{ item.logo.url }}" data-lightbox="award-admin" data-title="{{ item.title }}" style="height: 200px;">
+                <img style="display: block;margin:1.5em auto;" src="{% thumbnail item.logo 100x100 quality="100" %}" style="margin:0 auto;">
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'common/about_form.html' %}
+
+{% endblock content %}
+
+
+

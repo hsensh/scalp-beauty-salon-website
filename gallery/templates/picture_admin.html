@@ -1,0 +1,34 @@
+{% extends 'common/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Manage Gallery{% endblock %}
+
+{% block content %}
+
+{% include 'common/gallery_form.html' %}
+
+<div class='container'>
+    <div class='row'>
+    {% for item in objects %}
+    <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+        <div class="card h-100">
+            <a href="{{ item.picture.url }}" data-lightbox="picture-admin" data-title="{{ item.caption }}">
+                <img class="card-img-top" src="{% thumbnail item.picture 500x500 crop quality="100" %}">
+            </a>
+            <div class="card-body">{{ item.caption }}</div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'edit-picture-admin' item.id %}" class="card-link btn btn-info" style='width:100%;'>Edit</a>
+            </div>
+            <div style='margin:0;padding:0;'>
+                <a href="{% url 'delete-picture-admin' item.id %}" class="card-link btn btn-danger" style='width:100%;'>Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

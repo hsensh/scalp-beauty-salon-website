@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+<div class='row justify-content-center'>
+    <h1 class='text-center'>Reports</h1>
+</div>
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-sm-12'>
+        <h5 class='mb-2 mt-5'>Registered Admins</h5>
+        <p class='p-0 m-0'>Registered Admins <span class='pull-right'>{{ registered_admins }}</span></p>
+        <h5 class='mb-2 mt-5'>Registered Users</h5>
+        <p class='p-0 m-0'>Registered Users <span class='pull-right'>{{ registered_users }}</span></p>
+        <p class='p-0 m-0'>Registered Users This Day <span class='pull-right'>{{ registered_users_this_day }}</span></p>
+        <p class='p-0 m-0'>Registered Users This Month <span class='pull-right'>{{ registered_users_this_month }}</span></p>
+        <p class='p-0 m-0'>Registered Users This Year <span class='pull-right'>{{ registered_users_this_year }}</span></p>
+        <h5 class='mb-2 mt-5'>Registered Staff</h5>
+        <p class='p-0 m-0'>Registered Staff <span class='pull-right'>{{ registered_staff }}</span></p>
+        <p class='p-0 m-0'>Registered Staff This Day <span class='pull-right'>{{ registered_staff_this_day }}</span></p>
+        <p class='p-0 m-0'>Registered Staff This Month <span class='pull-right'>{{ registered_staff_this_month }}</span></p>
+        <p class='p-0 m-0'>Registered Staff This Year <span class='pull-right'>{{ registered_staff_this_year }}</span></p>
+        <h5 class='mb-2 mt-5'>Booked Appointments</h5>
+        <p class='p-0 m-0'>Appointments This Day <span class='pull-right'>{{ appointments_this_day }}</span></p>
+        <p class='p-0 m-0'>Appointments This Month <span class='pull-right'>{{ appointments_this_month }}</span></p>
+        <p class='p-0 m-0'>Appointments This Year <span class='pull-right'>{{ appointments_this_year }}</span></p>
+        <h5 class='mb-2 mt-5'>Appointments Revenue</h5>
+        <p class='p-0 m-0'>Appointments Revenue This Day <span class='pull-right'>{{ appointments_revenue_this_day }}$</span></p>
+        <p class='p-0 m-0'>Appointments Revenue This Month <span class='pull-right'>{{ appointments_revenue_this_month }}$</span></p>
+        <p class='p-0 m-0'>Appointments Revenue This Year <span class='pull-right'>{{ appointments_revenue_this_year }}$</span></p>
+        <p class='p-0 m-0'>Appointments Revenue of All Time <span class='pull-right'>{{ appointments_revenue }}$</span></p>
+        <h5 class='mb-2 mt-5'>Active Users</h5>
+        <p class='p-0 m-0'>Logged In Users <span class='pull-right'>{{ logged_in_users }}</span></p>
+    </div>
+</div>
+{% endblock %}

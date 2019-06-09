@@ -1,0 +1,35 @@
+ {% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}        
+    <div class='container'>
+    {% if form.non_field_errors %}
+    <div class='row justify-content-center content-wrapper'>
+        <div class="alert alert-danger form-error">
+        {% for error in form.non_field_errors %}
+        <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <div class='row justify-content-center'>
+        <form enctype='multipart/form-data' method="POST"> {% csrf_token %}
+            <div class='form-group'>
+                <label for="{{ form.username.id_for_label }}">Change {{ form.username.label }}</label>
+                {{ form.username|add_class:"form-control" }}
+                {% if form.username.errors %}
+                    <div class="alert alert-danger form-error">
+                    {% for error in form.username.errors %}
+                    <div style="margin:0;padding:0;"><small>{{ error }}</small></div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                <input class='form-control' type='submit' value='Change Username'>                
+            </div>
+        </form>
+    </div>
+    </div>
+{% endblock %}

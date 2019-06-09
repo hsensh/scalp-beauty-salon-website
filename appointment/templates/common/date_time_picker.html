@@ -1,0 +1,19 @@
+{% load widget_tweaks %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+{{ field|add_class:'form-control datetimepicker-input'|attr:'data-target:"#datetimepicker2"'}}
+    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    </div>
+</div>
+
+<script>
+$(function () {
+    $("#datetimepicker2").datetimepicker({
+        format: 'YYYY-MM-DD HH:00:00',
+        minDate: new Date(),
+        autoclose: true,
+    });
+});
+</script>

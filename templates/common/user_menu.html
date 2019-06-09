@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="user-status p-2">
+    {% if user.is_authenticated %}
+    <button class="btn btn-primary dropdown pull-left pr-1 pl-1 pt-0 pb-0 rounded">
+        <a class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        My Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'manage-account' %}">Account Management</a>
+            {% if is_admin %}
+            <a class="dropdown-item" href="{% url 'manage-site' %}">Site Management</a>
+            {% endif %}
+            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        </div>
+    </button>
+
+    Welcome {{ request.user.username }} 
+
+    {% if is_user %}
+    <button class='btn btn-primary pull-right pr-1 pl-1 pt-0 pb-0 rounded'>
+        <i class='fas fa-shopping-cart text-white mr-1'></i><a class='text-white' href="{% url 'cart' %}">Cart</a>
+    </button>
+    {% endif %}
+    {% else %}
+        Hello There Stranger! 
+        - <a href="{% url 'signup'%}">Sign Up</a>
+        - <a href="{% url 'login'%}">Log In</a>
+    {% endif %}
+    
+</div>

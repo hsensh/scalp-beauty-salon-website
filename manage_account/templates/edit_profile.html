@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+    {% if obj.photo %}
+    <div class='container'>
+    <p class='text-center mb-0 pb-0' style="font-size:1.4em;"><strong>Update Profile Information</strong></p>
+    <div class='row justify-content-center'>
+        <div class='col-lg-4 col-sm-6 col-xs-12 display-card'>
+            <div class="card">
+                <a href="{{ obj.photo.url }}" data-lightbox="edit-profile" data-title="{{ obj.about }}">
+                    <img class="card-img-top" src="{% thumbnail obj.photo 500x500 crop quality="100" %}">
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    <div class='container'>
+        {% include 'common/update_profile_form.html' %}
+    </div>
+{% endblock %}

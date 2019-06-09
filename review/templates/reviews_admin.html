@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+
+{% block title%}Reviews{% endblock%}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h1>All Reviews</h1>
+    </div>
+    {% if not reviews %}
+        <h1 class='text-center'>No Reviews Yet</h1>
+        <h5 class='text-center'><a href="{% url 'manage-site'%}">Back to Manage Site</a></h5>
+    {% else %}
+    <div class='row justify-content-center'>
+        {% for review in reviews %}
+        <div class='col-lg-4 col-md-6 col-sm-12'>
+            <div class='card p-2 display-card'>
+                <div class='card-body pb-0 mb-3 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Customer Name</h5>
+                    <p class='p-0 m-0'>{{ review.user.user.first_name }} {{ review.user.user.last_name }}</p>
+                    <h5 class='p-0 m-0'>Customer Username</h5>
+                    <p class='p-0 m-0'>{{ review.user.user.username }}</p>                    
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Summary</h5>
+                    <p class='p-0 m-0'>{{ review.summary }}</p>
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Info</h5>
+                    <p class='p-0 m-0'>{{ review.info }}</p>
+                </div>
+                <div class='card-body pb-0 mb-0 pt-0 mb-0'>
+                    <h5 class='p-0 m-0'>Rating</h5>
+                    <p class='p-0 m-0'>{{ review.rating }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

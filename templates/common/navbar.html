@@ -1,0 +1,76 @@
+{% load static %}
+<div class="site-mobile-menu">
+    <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+    </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div>
+
+<header class="site-navbar py-1" role="banner">
+    {% include 'common/user_menu.html' %}
+    <div class="container-fluid">
+    <div class="row align-items-center">
+        
+        <div class="col-6 col-xl-2" data-aos="fade-down">
+        <h1 class="mb-2"><a href="{% url 'home' %}" class="text-black h2 mb-2">Scalp</a></h1>
+        </div>
+        <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+        <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+            <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+                <li {% if request.resolver_match.url_name == 'service-type' %}class="active"{% endif %}>
+                    <a href="{% url 'service-type' %}">Appointments</a>
+                </li>
+                <li {% if request.resolver_match.url_name == 'product' %}class="active"{% endif %}>
+                    <a href="{% url 'product-type' %}">Products</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Contact
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'review'%}">Review</a>
+                        <a class="dropdown-item" href="{% url 'testimonial'%}">Testimonial</a>
+                        <a class="dropdown-item" href="{% url 'blog' %}">Blog</a>
+                    </div>
+                </li>
+                <li {% if request.resolver_match.url_name == 'gallery' %}class="active"{% endif %}>
+                    <a href="{% url 'gallery' %}">Gallery</a>
+                </li>
+            </ul>
+        </nav>
+        </div>
+
+        <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+        <div class="d-none d-xl-inline-block">
+            <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+            <li>
+                <a href="http://www.facebook.com" class="pl-0 pr-3 text-black"><span class="icon-facebook"></span></a>
+            </li>
+            <li>
+                <a href="http://www.twitter.com" class="pl-3 pr-3 text-black"><span class="icon-twitter"></span></a>
+            </li>
+            <li>
+                <a href="http://www.instagram.com" class="pl-3 pr-3 text-black"><span class="icon-instagram"></span></a>
+            </li>
+            <li>
+                <a href="http://www.youtube.com" class="pl-3 pr-3 text-black"><span class="icon-youtube-play"></span></a>
+            </li>
+            </ul>
+        </div>
+
+        <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+        </div>
+
+    </div>
+    </div>
+    
+</header>

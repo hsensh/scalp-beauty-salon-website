@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Thank you{% endblock %}
+
+{% block content %}
+<div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-6 col-sm-12'>
+        <h1 class='text-center'>We Appreciate It!</h1>
+        <h5 class='text-center'>Thanks for the Testimonial!</h1>
+        <h5 class='text-center'><a href="{% url 'testimonial'%}">Review Another Staff Member</a></h5>
+        <h5 class='text-center'><a href="{% url 'home'%}">Return to Homepage</a></h5>
+    </div>
+</div>
+{% endblock %}
